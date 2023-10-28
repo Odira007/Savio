@@ -1905,11 +1905,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\xampp\\htdocs\\COURSES\\.NET\\SavioApi\\SavioApi.csproj",
+      "projectUniqueName": "C:\\xampp\\htdocs\\WORK\\Savio\\SavioApi\\SavioApi.csproj",
       "projectName": "SavioApi",
-      "projectPath": "C:\\xampp\\htdocs\\COURSES\\.NET\\SavioApi\\SavioApi.csproj",
+      "projectPath": "C:\\xampp\\htdocs\\WORK\\Savio\\SavioApi\\SavioApi.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\xampp\\htdocs\\COURSES\\.NET\\SavioApi\\obj\\",
+      "outputPath": "C:\\xampp\\htdocs\\WORK\\Savio\\SavioApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"

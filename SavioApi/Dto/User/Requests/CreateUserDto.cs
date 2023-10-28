@@ -13,6 +13,7 @@ namespace SavioApi.Dto.User.Requests
         [EmailAddress]
         public String? Email { get; set; }
         public String? PhoneNumber { get; set; }
+        public String ProfilePicture { get; set; }
         public String Password { get; set; }
         [Compare("Password")]
         public String ConfirmPassword { get; set; }

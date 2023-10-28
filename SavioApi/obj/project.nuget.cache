@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DJq2TS5azLEqqCrhK8EaHZOSsfNJy+Dao/qB2TEo947g9dlBtQhsTGeMO3OCFCeHieR37WWrAHU6yE62q7Y/eQ==",
+  "dgSpecHash": "2M7Itba1/aNBUfBZbjTNUmvwSl08VBQkukQFrg1iZlTd2Tqwb1G/if5bGX1c7O0oFlzMwAuRgQW4K9mgX5qAzQ==",
   "success": true,
-  "projectFilePath": "C:\\xampp\\htdocs\\COURSES\\.NET\\SavioApi\\SavioApi.csproj",
+  "projectFilePath": "C:\\xampp\\htdocs\\WORK\\Savio\\SavioApi\\SavioApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

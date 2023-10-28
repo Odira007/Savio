@@ -75,9 +75,23 @@ namespace SavioApi.Dependencies.Services
             return users;
         }
 
-        public Task<User> UpdateUser(Guid Id, UpdateUserDto dto)
+        public async Task<User> UpdateUser(Guid Id, UpdateUserDto dto)
         {
-            throw new NotImplementedException();
+            var result = await FindUser(Id);
+            if (result == null)
+            {
+                return null;
+
+            }
+            result.FirstName = dto.FirstName;
+            result.LastName = dto.LastName;
+            result.Email = dto.Email;
+            result.PhoneNumber = dto.PhoneNumber;
+            result.ProfilePicture = dto.ProfilePicture;
+            result.Password=dto.ConfirmPassword;
+            _context.Entry(result).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return result;
         }
 
            public async Task<User> UserLogin(UserLoginDto dto)

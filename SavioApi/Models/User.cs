@@ -14,6 +14,9 @@ namespace SavioApi.Models
         public String? LastName { get; set; }
         public String? Email { get; set; }
         public String? PhoneNumber { get; set; }
+        public String? ProfilePicture { get; set; }
+
+
         public String? Password { get; set; }
         public String? BVN { get; set; }
     }
