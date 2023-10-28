@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SavioApi.Data;
 
@@ -10,9 +11,11 @@ using SavioApi.Data;
 namespace SavioApi.Migrations
 {
     [DbContext(typeof(SavioDbContext))]
-    partial class SavioDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231028205609_made changes to user model")]
+    partial class madechangestousermodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");

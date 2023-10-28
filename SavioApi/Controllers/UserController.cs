@@ -42,7 +42,7 @@ namespace SavioApi.Controllers
                 var response = x.ConvertToGood("USER CREATED SUCCESSFULLY");
                 response.Data = userDto;
 
-                return Ok(response);
+                return StatusCode(201,response);
             }
             catch (Exception ex)
             {
@@ -62,7 +62,8 @@ namespace SavioApi.Controllers
                     return BadRequest(x.ConvertToBad("USER NOT FOUND OR DELETION FAILED"));
                 }
 
-                return StatusCode(204, x.ConvertToGood("USER DELETED SUCCESSFULLY"));
+                return StatusCode(204, x.ConvertToGood("USER DELETED SUCCESSFULLY"));//ACTUAL AND PROPER RESPONSE
+                // return StatusCode(200, x.ConvertToGood("USER DELETED SUCCESSFULLY"));//TEST WITH THIS TO SEE MORE DETAILS
             }
             catch (Exception ex)
             {
@@ -117,7 +118,7 @@ namespace SavioApi.Controllers
             }
         }
 
-        [HttpPut("UpdateUser/{USerId}")]
+        [HttpPut("UpdateUser/{UserId}")]
         public async Task<ActionResult<DefaultResponse<ReadUserDto>>> UpdateUser(
             [FromRoute] Guid UserId,
             [FromBody] UpdateUserDto dto

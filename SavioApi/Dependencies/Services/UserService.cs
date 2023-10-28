@@ -75,9 +75,9 @@ namespace SavioApi.Dependencies.Services
             return users;
         }
 
-        public async Task<User> UpdateUser(Guid Id, UpdateUserDto dto)
+        public async Task<User> UpdateUser(Guid UserId, UpdateUserDto dto)
         {
-            var result = await FindUser(Id);
+            var result = await FindUser(UserId);
             if (result == null)
             {
                 return null;
