@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SavioApi.Data;
+using SavioApi.Dependencies.Interfaces;
+using SavioApi.Dependencies.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IUserService,UserService>();
 
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//THIS IS FOR THE AUTOMAPPER
