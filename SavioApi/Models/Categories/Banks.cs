@@ -3,7 +3,7 @@ namespace SavioApi.Models.Categories
     using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace SavioApi.Models.Banks
+namespace SavioApi.Models.Categories
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Bank

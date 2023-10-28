@@ -9,12 +9,12 @@ namespace SavioApi.Dependencies.Interfaces
 {
     public interface IUserService
     {
-        Task<User> CreateUser(CreateUserDto dto);
-        Task<List<User>> GetUsers();
-        Task<User> FindUser(Guid Id);
-        Task<User> UserLogin(UserLoginDto dto);
-        Task<User> GetSingleUserById(Guid Id);
-        Task<User> UpdateUser(Guid Id,UpdateUserDto dto);
+        Task<Users> CreateUser(CreateUserDto dto);
+        Task<List<Users>> GetUsers();
+        Task<Users> FindUser(Guid Id);
+        Task<Users> UserLogin(UserLoginDto dto);
+        Task<Users> GetSingleUserById(Guid Id);
+        Task<Users> UpdateUser(Guid Id,UpdateUserDto dto);
         Task<bool> DeleteUser(Guid Id);
         Task<bool> FindAny(Guid Id);
     }

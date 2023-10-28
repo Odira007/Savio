@@ -21,13 +21,13 @@ namespace SavioApi.Dependencies.Services
             _mapper = mapper;
             
         }
-        public async Task<User> CreateUser(CreateUserDto dto)
+        public async Task<Users> CreateUser(CreateUserDto dto)
         {
             var check=await _context.Users.FirstOrDefaultAsync(x=>x.Email==dto.Email||x.PhoneNumber==dto.PhoneNumber||x.BVN==dto.BVN);
             if(check!=null){
                 return null;
             }
-            var user=_mapper.Map<User>(dto);
+            var user=_mapper.Map<Users>(dto);
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
             return user;
@@ -50,7 +50,7 @@ namespace SavioApi.Dependencies.Services
             return await _context.Users.AnyAsync(x=>x.UserId==Id);
         }
 
-        public async Task<User> FindUser(Guid Id)
+        public async Task<Users> FindUser(Guid Id)
         {
            var user=await _context.Users.FindAsync(Id);
            if(user==null){
@@ -59,14 +59,14 @@ namespace SavioApi.Dependencies.Services
            return user;
         }
 
-        public async Task<User> GetSingleUserById(Guid Id)
+        public async Task<Users> GetSingleUserById(Guid Id)
         {
             return await FindUser(Id);
         }
 
        
 
-        public async Task<List<User>> GetUsers()
+        public async Task<List<Users>> GetUsers()
         {
             var users=await _context.Users.ToListAsync();
             if(users==null){
@@ -75,7 +75,7 @@ namespace SavioApi.Dependencies.Services
             return users;
         }
 
-        public async Task<User> UpdateUser(Guid UserId, UpdateUserDto dto)
+        public async Task<Users> UpdateUser(Guid UserId, UpdateUserDto dto)
         {
             var result = await FindUser(UserId);
             if (result == null)
@@ -94,7 +94,7 @@ namespace SavioApi.Dependencies.Services
             return result;
         }
 
-           public async Task<User> UserLogin(UserLoginDto dto)
+           public async Task<Users> UserLogin(UserLoginDto dto)
         {
             var user=await _context.Users.FirstOrDefaultAsync(x=>(x.PhoneNumber==dto.EmailOrPhoneNumber||x.Email==dto.EmailOrPhoneNumber)&&x.Password==dto.Password);
             if(user==null){

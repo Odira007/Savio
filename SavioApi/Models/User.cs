@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SavioApi.Models
 {
-    public class User
+    public class Users
     {
         [Key]
         public Guid UserId { get; set; }
