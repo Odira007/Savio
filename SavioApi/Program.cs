@@ -10,9 +10,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//THIS IS FOR THE AUTOMAPPER
+
 builder.Services.AddDbContext<SavioDbContext>(options=>{
     options.UseSqlite(builder.Configuration.GetConnectionString("SavioDb"));
-});
+});//THIS IS FOR  THE ENTITY FRAMEWORK AND THE MODELS.
 
 var app = builder.Build();
 
