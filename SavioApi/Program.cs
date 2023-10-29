@@ -14,6 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUserService,UserService>();
+builder.Services.AddScoped<ITransactionService,TransactionService>();
 builder.Services.AddScoped<IAccountService,AccountService>();
 
 

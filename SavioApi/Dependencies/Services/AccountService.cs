@@ -94,5 +94,17 @@ namespace SavioApi.Dependencies.Services
             }
             return false;
         }
+
+        public async Task<UserAccount> UpdateAccountBalance(Guid AccountId, double Amount)
+        {
+           var account = await _context.Accounts.FirstOrDefaultAsync(x=>x.AccountId==AccountId);
+            if (account != null)
+            {
+                account.AccountBalance =Amount;
+                account.AccountUpdatedAt = DateTime.Now;
+                await _context.SaveChangesAsync();
+            }
+            return account;
+        }
     }
 }

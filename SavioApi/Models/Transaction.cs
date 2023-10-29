@@ -13,13 +13,14 @@ namespace SavioApi.Models.Data
         public Guid TransactionId { get; set; } 
         public Guid AccountId { get; set; }
         public UserAccount Account { get; set; }
+        // public Guid TransactionSender { get; set; }
         public DateTime TransactionTime { get; set; }
-        public DateTime TransactionUpdatedAt { get; set; }
+        public DateTime? TransactionUpdatedAt { get; set; }
 
         public TransactionType TransactionType { get; set; }
-        public Guid TransactionSender { get; set; }
-        public Guid TransactionReceiver { get; set; }
+        
+        public Guid ReceivingAccount { get; set; }
         public double TransactionAmount { get; set; }
-        public TransactionStatus TransactionStatus { get; set; }=TransactionStatus.Pending;
+        //public TransactionStatus TransactionStatus { get; set; }=TransactionStatus.Pending;
     }
 }

@@ -12,6 +12,7 @@ namespace SavioApi.Dependencies.Interfaces
     {
         Task<UserAccount> CreateAccount(CreateAccountDto dto);
         Task<List<UserAccount>> GetUserAccounts(Guid UserId);
+        Task<UserAccount> UpdateAccountBalance(Guid AccountId,double Amount);
         Task<UserAccount> GetAccountByAccountId(Guid Id);
         Task<UserAccount> GetAccountByAccountNumber(GetAccountDto dto);
         Task<UserAccount>  UpdateAccount(Guid Id,UpdateAccountDto dto);

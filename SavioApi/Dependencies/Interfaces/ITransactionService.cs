@@ -7,18 +7,19 @@ using SavioApi.Dto.Transactions.Requests;
 using SavioApi.Models;
 using SavioApi.Models.Categories.SavioApi.Models.Categories;
 using SavioApi.Models.Data;
+using SavioApi.Response;
 
 namespace SavioApi.Dependencies.Interfaces
 {
     public interface ITransactionService
     {
-        Task<Transaction> SendMoney(CreateTransactionDto dto);
-        Task<List<Transaction>> GetAccountTransactions(Guid AccountId);
-        Task<List<Transaction>> GetUserTransactions(Guid UserId);
-        Task<List<Transaction>> GetAllBankTransactions(Bank bank);
-        Task<List<Transaction>> GetAllTransactions();
-        Task<Transaction> UpdateTransaction(Guid TransactionId,UpdateTransactionDto dto);
-        Task<Transaction> ApproveTransaction(Guid TransactionId);
-        Task<Transaction> RejectTransaction(Guid TransactionId);
+        Task<TransactionResponse<Transaction>> SendMoney(CreateTransactionDto dto);
+        Task<List<TransactionResponse<Transaction>>> GetAccountTransactions(Guid AccountId);
+        Task<List<TransactionResponse<Transaction>>> GetUserTransactions(Guid UserId);
+        Task<List<TransactionResponse<Transaction>>> GetAllBankTransactions(Bank bank);
+        Task<List<TransactionResponse<Transaction>>> GetAllTransactions();
+        Task<TransactionResponse<Transaction>> UpdateTransaction(Guid TransactionId,UpdateTransactionDto dto);
+        Task<TransactionResponse<Transaction>> ApproveTransaction(Guid TransactionId);
+        Task<TransactionResponse<Transaction>> RejectTransaction(Guid TransactionId);
     }
 }

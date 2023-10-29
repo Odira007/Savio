@@ -10,7 +10,6 @@ namespace SavioApi.Dto.Transactions
 
         public Guid AccountId { get; set; }
         public TransactionType TransactionType { get; set; }
-        public Guid TransactionSender { get; set; }
         public Guid TransactionReceiver { get; set; }
         public double TransactionAmount { get; set; }
         
