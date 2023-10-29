@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using SavioApi.Dto.Account.Response;
 using CodeCommApi.Dependencies;
+using CodeCommApi.Response;
 
 namespace SavioApi.Controllers
 {
@@ -18,7 +19,7 @@ namespace SavioApi.Controllers
     {
         private readonly IAccountService _service;
         private readonly IMapper _mapper;
-        private AutoResponse<ReadAccountDto> x;
+        private AutoResponse<ReadAccountDto> x=new();
 
         public AccountController(IAccountService accountService, IMapper mapper)
         {
@@ -27,7 +28,7 @@ namespace SavioApi.Controllers
         }
 
         [HttpPost("CreateAccount")]
-        public async Task<ActionResult<ReadAccountDto>> CreateAccount(
+        public async Task<ActionResult<DefaultResponse<ReadAccountDto>>> CreateAccount(
             [FromBody] CreateAccountDto dto
         )
         {
@@ -37,6 +38,7 @@ namespace SavioApi.Controllers
 
                 if (newAccount != null)
                 {
+
                     var accountDto = _mapper.Map<ReadAccountDto>(newAccount);
                     var response = x.ConvertToGood("ACCOUNT CREATED SUCCESSFULLY");
                     response.Data = accountDto;
@@ -50,8 +52,8 @@ namespace SavioApi.Controllers
             }
         }
 
-        [HttpGet("User/{UserId}")]
-        public async Task<ActionResult<List<ReadAccountDto>>> GetUserAccounts(Guid UserId)
+        [HttpGet("GetUserAccounts/{UserId}")]
+        public async Task<ActionResult<DefaultResponse<List<ReadAccountDto>>>> GetUserAccounts(Guid UserId)
         {
             try
             {
@@ -74,7 +76,7 @@ namespace SavioApi.Controllers
         }
 
         [HttpGet("GetAccountById/{accountId}")]
-        public async Task<ActionResult<ReadAccountDto>> GetAccountById([FromRoute] Guid accountId)
+        public async Task<ActionResult<DefaultResponse<ReadAccountDto>>> GetAccountById([FromRoute] Guid accountId)
         {
             try
             {
@@ -96,7 +98,7 @@ namespace SavioApi.Controllers
         }
 
         [HttpPut("UpdateAccount/{accountId}")]
-        public async Task<ActionResult<ReadAccountDto>> UpdateAccount(
+        public async Task<ActionResult<DefaultResponse<ReadAccountDto>>> UpdateAccount(
             [FromRoute] Guid accountId,
             [FromBody] UpdateAccountDto updateAccountDto
         )
@@ -121,7 +123,7 @@ namespace SavioApi.Controllers
         }
 
         [HttpPatch("DisableAccount/{accountId}")]
-        public async Task<ActionResult<ReadAccountDto>> DisableAccount([FromRoute] Guid accountId)
+        public async Task<ActionResult<DefaultResponse<ReadAccountDto>>> DisableAccount([FromRoute] Guid accountId)
         {
             try
             {
@@ -143,7 +145,7 @@ namespace SavioApi.Controllers
         }
 
         [HttpDelete("DeleteAccount/{accountId}")]
-        public async Task<ActionResult> DeleteAccount([FromRoute]Guid accountId)
+        public async Task<ActionResult<DefaultResponse<bool>>> DeleteAccount([FromRoute]Guid accountId)
         {
             try
             {

@@ -19,7 +19,7 @@ namespace SavioApi.Models.Profiles
          CreateMap<UpdateUserDto,Users>();
          CreateMap<Users,ReadUserDto>();
 
-         CreateMap<CreateUserDto,Account>();
+         CreateMap<CreateAccountDto,Account>();
          CreateMap<UpdateAccountDto,Account>();
          CreateMap<Account,ReadAccountDto>();
 

@@ -16,16 +16,25 @@ namespace SavioApi.Dependencies.Services
     {
         private readonly IMapper _mapper;
         private readonly SavioDbContext _context;
+        private IUserService _user;
 
-        public AccountService(IMapper mapper, SavioDbContext context)
+        public AccountService(IMapper mapper, SavioDbContext context, IUserService user)
         {
             _context = context;
             _mapper = mapper;
+            _user = user;
         }
 
         public async Task<Account> CreateAccount(CreateAccountDto dto)
         {
-            var account = _mapper.Map<Account>(dto);
+            Users user = await _user.FindUser(dto.UserId);
+            if (user == null)
+            {
+                return null;
+            }
+            Account account = _mapper.Map<Account>(dto);
+            account.AccountId=Guid.NewGuid();
+            account.AccountUser = user;
             await _context.Accounts.AddAsync(account);
             await _context.SaveChangesAsync();
             return account;
@@ -38,17 +47,19 @@ namespace SavioApi.Dependencies.Services
 
         public async Task<Account> GetAccountByAccountId(Guid Id)
         {
-            return await _context.Accounts.FindAsync(Id);
+            return await _context.Accounts.FirstOrDefaultAsync(x=>x.AccountId==Id);
         }
 
         public async Task<Account> GetAccountByAccountNumber(GetAccountDto dto)
         {
-            return await _context.Accounts.FirstOrDefaultAsync(a => a.AccountNumber == dto.AccountNumber && a.BankName == dto.BankName);
+            return await _context.Accounts.FirstOrDefaultAsync(
+                a => a.AccountNumber == dto.AccountNumber && a.BankName == dto.BankName
+            );
         }
 
         public async Task<Account> UpdateAccount(Guid Id, UpdateAccountDto dto)
         {
-            var account = await _context.Accounts.FindAsync(Id);
+            var account = await _context.Accounts.FirstOrDefaultAsync(x=>x.AccountId==Id);
             if (account != null)
             {
                 account.AccountBalance = dto.AccountBalance;
@@ -63,7 +74,7 @@ namespace SavioApi.Dependencies.Services
 
         public async Task<Account> DisableAccount(Guid Id)
         {
-            var account = await _context.Accounts.FindAsync(Id);
+            var account = await _context.Accounts.FirstOrDefaultAsync(x=>x.AccountId==Id);
             if (account != null)
             {
                 account.AccountStatus = AccountStatus.InActive; // Update the status accordingly
@@ -74,7 +85,7 @@ namespace SavioApi.Dependencies.Services
 
         public async Task<bool> DeleteAccount(Guid Id)
         {
-            var account = await _context.Accounts.FindAsync(Id);
+            var account = await _context.Accounts.FirstOrDefaultAsync(x=>x.AccountId==Id);
             if (account != null)
             {
                 _context.Accounts.Remove(account);

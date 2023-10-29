@@ -10,7 +10,7 @@ namespace SavioApi.Dto.Account.Requests
     public class CreateAccountDto
     {
   
-        public int AccountNumber { get; set; }
+        public String AccountNumber { get; set; }
 
         public Bank BankName { get; set; }
 
