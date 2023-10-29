@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\OneDrive\\Desktop\\C_sharp\\Savio\\SavioApi\\SavioApi.csproj": {}
+    "C:\\xampp\\htdocs\\WORK\\Savio\\savioapi\\SavioApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\OneDrive\\Desktop\\C_sharp\\Savio\\SavioApi\\SavioApi.csproj": {
+    "C:\\xampp\\htdocs\\WORK\\Savio\\savioapi\\SavioApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\OneDrive\\Desktop\\C_sharp\\Savio\\SavioApi\\SavioApi.csproj",
+        "projectUniqueName": "C:\\xampp\\htdocs\\WORK\\Savio\\savioapi\\SavioApi.csproj",
         "projectName": "SavioApi",
-        "projectPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\C_sharp\\Savio\\SavioApi\\SavioApi.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\C_sharp\\Savio\\SavioApi\\obj\\",
+        "projectPath": "C:\\xampp\\htdocs\\WORK\\Savio\\savioapi\\SavioApi.csproj",
+        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+        "outputPath": "C:\\xampp\\htdocs\\WORK\\Savio\\savioapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -100,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
