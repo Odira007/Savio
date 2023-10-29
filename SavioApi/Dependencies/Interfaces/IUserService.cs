@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SavioApi.Dto.User.Requests;
 using SavioApi.Models;
+using SavioApi.Models.Data;
 
 namespace SavioApi.Dependencies.Interfaces
 {

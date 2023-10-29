@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using SavioApi.Models.Categories;
 using SavioApi.Models.Categories.SavioApi.Models.Categories;
 
-namespace SavioApi.Models
+namespace SavioApi.Models.Data
 {
     [PrimaryKey("UserId", "AccountNumber")]
-    public class Account
+    public class UserAccount
     {
         [Key]
         public Guid AccountId { get; set; }

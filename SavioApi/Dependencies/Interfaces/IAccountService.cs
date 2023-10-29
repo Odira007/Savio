@@ -4,17 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using SavioApi.Dto.Account.Requests;
 using SavioApi.Models;
+using SavioApi.Models.Data;
 
 namespace SavioApi.Dependencies.Interfaces
 {
     public interface IAccountService
     {
-        Task<Account> CreateAccount(CreateAccountDto dto);
-        Task<List<Account>> GetUserAccounts(Guid UserId);
-        Task<Account> GetAccountByAccountId(Guid Id);
-        Task<Account> GetAccountByAccountNumber(GetAccountDto dto);
-        Task<Account>  UpdateAccount(Guid Id,UpdateAccountDto dto);
-        Task<Account>  DisableAccount(Guid Id);
+        Task<UserAccount> CreateAccount(CreateAccountDto dto);
+        Task<List<UserAccount>> GetUserAccounts(Guid UserId);
+        Task<UserAccount> GetAccountByAccountId(Guid Id);
+        Task<UserAccount> GetAccountByAccountNumber(GetAccountDto dto);
+        Task<UserAccount>  UpdateAccount(Guid Id,UpdateAccountDto dto);
+        Task<UserAccount>  DisableAccount(Guid Id);
         Task<bool> DeleteAccount(Guid Id);
 
         

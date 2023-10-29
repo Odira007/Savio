@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using SavioApi.Models;
 using SavioApi.Models.Categories;
 using SavioApi.Models.Categories.SavioApi.Models.Categories;
+using SavioApi.Models.Data;
 
 namespace SavioApi.Dto.Account.Response
 {
@@ -15,8 +16,6 @@ namespace SavioApi.Dto.Account.Response
         public String AccountNumber { get; set; }
         public double AccountBalance { get; set; }
         public Bank BankName { get; set; }
-
-
         public Guid UserId { get; set; }
         public Users AccountUser { get; set; }
         public AccountType AccountType { get; set; }

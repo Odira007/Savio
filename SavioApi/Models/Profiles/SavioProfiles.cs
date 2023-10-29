@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using SavioApi.Dto.Account.Requests;
 using SavioApi.Dto.Account.Response;
+using SavioApi.Dto.Transactions;
+using SavioApi.Dto.Transactions.Responses;
 using SavioApi.Dto.User.Requests;
 using SavioApi.Dto.User.Response;
+using SavioApi.Models.Data;
 
 namespace SavioApi.Models.Profiles
 {
@@ -19,13 +22,12 @@ namespace SavioApi.Models.Profiles
          CreateMap<UpdateUserDto,Users>();
          CreateMap<Users,ReadUserDto>();
 
-         CreateMap<CreateAccountDto,Account>();
-         CreateMap<UpdateAccountDto,Account>();
-         CreateMap<Account,ReadAccountDto>();
+         CreateMap<CreateAccountDto,UserAccount>();
+         CreateMap<UpdateAccountDto,UserAccount>();
+         CreateMap<UserAccount,ReadAccountDto>();
 
-        //  CreateMap<CreateUserDto,Users>();
-        //  CreateMap<UpdateUserDto,Users>();
-        //  CreateMap<Users,ReadUserDto>();
+         CreateMap<CreateTransactionDto,Transaction>();
+         CreateMap<Transaction,ReadTransactionDto>();
 
          
 

@@ -140,3 +140,4 @@ C:\xampp\htdocs\WORK\Savio\SavioApi\obj\Debug\net7.0\refint\SavioApi.dll
 C:\xampp\htdocs\WORK\Savio\SavioApi\obj\Debug\net7.0\SavioApi.pdb
 C:\xampp\htdocs\WORK\Savio\SavioApi\obj\Debug\net7.0\SavioApi.genruntimeconfig.cache
 C:\xampp\htdocs\WORK\Savio\SavioApi\obj\Debug\net7.0\ref\SavioApi.dll
+C:\xampp\htdocs\WORK\Savio\SavioApi\bin\Debug\net7.0\RestSharp.dll

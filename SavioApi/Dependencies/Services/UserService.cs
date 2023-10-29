@@ -8,6 +8,7 @@ using SavioApi.Data;
 using SavioApi.Dependencies.Interfaces;
 using SavioApi.Dto.User.Requests;
 using SavioApi.Models;
+using SavioApi.Models.Data;
 
 namespace SavioApi.Dependencies.Services
 {

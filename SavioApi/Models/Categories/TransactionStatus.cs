@@ -1,7 +1,7 @@
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace SavioApi.Models.Transactions
+namespace SavioApi.Models.Categories
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum TransactionStatus
