@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using SavioApi.Data;
 using SavioApi.Dependencies.Interfaces;
 using SavioApi.Dto.Account.Requests;
@@ -42,7 +43,7 @@ namespace SavioApi.Dependencies.Services
             var sendingaccount=await _account.GetAccountByAccountId(dto.AccountId);
             // var receivingAccount=await _account.GetAccountByAccountId(dto.TransactionReceiver);
             if(sendingaccount==null||receivingAccount==null){
-                return x.Failed("INVALID TRANSACTION : INCORRECT USER DETAILS");
+                return x.Failed($"INVALID TRANSACTION : INCORRECT USER DETAILS || Sender: {sendingaccount} | Reciever: {receivingAccount}");
             }
            if(receivingAccount==null){
             return x.Failed("RECEIVING ACCOUNT NOT FOUND");
@@ -70,9 +71,10 @@ namespace SavioApi.Dependencies.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<TransactionResponse<Transaction>>> GetAccountTransactions(Guid AccountId)
+        public async Task<List<Transaction>> GetAccountTransactions(Guid AccountId)
         {
-            throw new NotImplementedException();
+            return await _context.Transactions.Where(t => t.AccountId == AccountId).ToListAsync();
+            // throw new NotImplementedException();
         }
 
         public Task<List<TransactionResponse<Transaction>>> GetAllBankTransactions(Bank bank)
@@ -80,14 +82,16 @@ namespace SavioApi.Dependencies.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<TransactionResponse<Transaction>>> GetAllTransactions()
+        public async Task<List<Transaction>> GetAllTransactions()
         {
-            throw new NotImplementedException();
+            return await _context.Transactions.ToListAsync();
+            // throw new NotImplementedException();
         }
 
-        public Task<List<TransactionResponse<Transaction>>> GetUserTransactions(Guid UserId)
+        public async Task<List<Transaction>> GetUserTransactions(Guid UserId)
         {
-            throw new NotImplementedException();
+            return await _context.Transactions.Where(t => t.Account.UserId == UserId).ToListAsync();
+            // throw new NotImplementedException();
         }
 
         public Task<TransactionResponse<Transaction>> RejectTransaction(Guid TransactionId)

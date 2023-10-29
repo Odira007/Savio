@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CodeCommApi.Dependencies;
+using CodeCommApi.Response;
 using Microsoft.AspNetCore.Mvc;
 using SavioApi.Dependencies.Interfaces;
 using SavioApi.Dto.Transactions;
@@ -40,6 +41,42 @@ namespace SavioApi.Controllers
             catch(Exception ex){
                 return StatusCode(500,x.ConvertToBad($"{ex.Message}"));
             }
+        }
+
+        [HttpGet("AllTransactions")]
+        public async Task<ActionResult<DefaultResponse<Transaction>>> AllTransactions()
+        {
+            List<Transaction> transactions = await _service.GetAllTransactions();
+
+            var x = new AutoResponse<List<Transaction>>();
+            var response = x.ConvertToGood("REQUEST SUCCESSFUL");
+            response.Data = transactions;
+
+            return Ok(response);
+        }
+
+        [HttpGet("GetTransactionsByUser/{userId}")]
+        public async Task<ActionResult<List<Transaction>>> UserTransactions(Guid userId)
+        {
+            List<Transaction> transactions = await _service.GetUserTransactions(userId);
+
+            var x = new AutoResponse<List<Transaction>>();
+            var response = x.ConvertToGood("REQUEST SUCCESSFUL");
+            response.Data = transactions;
+
+            return Ok(response);
+        }
+        
+        [HttpGet("GetTransactionsByAccount/{accountId}")]
+        public async Task<ActionResult<List<Transaction>>> AccountTransactions(Guid accountId)
+        {
+            List<Transaction> transactions = await _service.GetAccountTransactions(accountId);
+
+            var x = new AutoResponse<List<Transaction>>();
+            var response = x.ConvertToGood("REQUEST SUCCESSFUL");
+            response.Data = transactions;
+
+            return Ok(response);
         }
     }
 }
