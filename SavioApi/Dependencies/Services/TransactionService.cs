@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using AutoMapper;
 using SavioApi.Data;
 using SavioApi.Dependencies.Interfaces;
+using SavioApi.Dto.Account.Requests;
 using SavioApi.Dto.Transactions;
 using SavioApi.Dto.Transactions.Requests;
+using SavioApi.Models.Categories;
 using SavioApi.Models.Categories.SavioApi.Models.Categories;
 using SavioApi.Models.Data;
 using SavioApi.Response;
@@ -33,8 +35,12 @@ namespace SavioApi.Dependencies.Services
         {
             
             var transaction=_mapper.Map<Transaction>(dto);
+            GetAccountDto accountDto=new(){
+            AccountNumber=dto.TransactionReceiver,
+            BankName=dto.BankName};
+            var receivingAccount=await _account.GetAccountByAccountNumber(accountDto);
             var sendingaccount=await _account.GetAccountByAccountId(dto.AccountId);
-            var receivingAccount=await _account.GetAccountByAccountId(dto.TransactionReceiver);
+            // var receivingAccount=await _account.GetAccountByAccountId(dto.TransactionReceiver);
             if(sendingaccount==null||receivingAccount==null){
                 return x.Failed("INVALID TRANSACTION");
             }
@@ -46,9 +52,11 @@ namespace SavioApi.Dependencies.Services
             return x.Declined("INSUFFICIENT ACCOUNT BALANCE");
            }
            await _account.UpdateAccountBalance(dto.AccountId,balance-dto.TransactionAmount);
-           await _account.UpdateAccountBalance(dto.TransactionReceiver,receivingAccount.AccountBalance+dto.TransactionAmount);
+           await _account.UpdateAccountBalance(receivingAccount.AccountId,receivingAccount.AccountBalance+dto.TransactionAmount);
            transaction.Account=sendingaccount;
            transaction.TransactionTime=DateTime.Now;
+           transaction.ReceivingAccount=receivingAccount.AccountId;
+           transaction.TransactionType=TransactionType.Debit;
            var response=x.Approved("TRANSFER SUCCESSFUL");
            response.Data=transaction;
             await _context.Transactions.AddAsync(transaction);
