@@ -42,7 +42,7 @@ namespace SavioApi.Dependencies.Services
             var sendingaccount=await _account.GetAccountByAccountId(dto.AccountId);
             // var receivingAccount=await _account.GetAccountByAccountId(dto.TransactionReceiver);
             if(sendingaccount==null||receivingAccount==null){
-                return x.Failed("INVALID TRANSACTION");
+                return x.Failed("INVALID TRANSACTION : INCORRECT USER DETAILS");
             }
            if(receivingAccount==null){
             return x.Failed("RECEIVING ACCOUNT NOT FOUND");
