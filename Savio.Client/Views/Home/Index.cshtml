@@ -1,4 +1,5 @@
-﻿@{
+﻿@model DashboardViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -48,12 +49,14 @@
         </div>
         </ul>
 
-        <span class="material-symbols-outlined">
-            crowdsource
-        </span>
-        <button class="logout">
-            Log out
-        </button>
+        <div class="logout">
+            <span class="material-symbols-outlined">
+                logout
+            </span>
+            <button class="logout-btn">
+                Log out
+            </button>
+        </div>
         </nav>
 
     </div>
@@ -62,7 +65,34 @@
         <h2 class="section-header">
             Dashboard
         </h2>
-    </div>
+
+        <div class="transactions">
+            <h2 class="table-header">Recent Transactions</h2>
+            <div class="center">
+                <table class="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>More Details</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var transaction in Model.transactions.Take(5))
+                        {
+                            <tr>
+                                <td>@transaction.TransactionType</td>
+                                <td>@transaction.TransactionAmount</td>
+                                <td>@transaction.TransactionTime</td>
+                                <td><button class="view-more">View</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
     <div class="grid-item">
         

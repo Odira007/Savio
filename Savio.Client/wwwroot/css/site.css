@@ -105,11 +105,11 @@ body {
         color: var(--white)
     }
 
-    .nav-items > .nav-field li {
+    .nav-items > .nav-field li, .material-symbols-outlined {
         padding-left: 10px;
     }
 
-.logout {
+.logout-btn {
     padding-left: 10px;
     border: none !important;
     background-color: transparent;
@@ -118,10 +118,48 @@ body {
     letter-spacing: -1px;
 }
 
+.logout {
+    display: flex;
+    align-items: center;
+}
+
 .grid-container > div:nth-of-type(2) .section-header {
     font-weight: 900;
     margin-bottom: 2rem;
     font-size: 2.3rem;
+}
+
+.table-header {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.transactions-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 100%;
+    font-size: .9em;
+    font-weight: 500;
+}
+
+    .transactions-table th, .transactions-table td {
+        padding: 12px 15px;
+    }
+
+.view-more {
+    margin-left: 30px;
+    border: none;
+    background-color: var(--greenyellow);
+    padding: 6px 18px;
+    font-weight: 600;
+    color: var(--black);
+    border-radius: 5px;
 }
 
 a.navbar-brand {

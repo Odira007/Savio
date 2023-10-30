@@ -38,3 +38,7 @@ C:\Users\ODIRA.DESKTOP-II4QM4T\source\repos\Savio\Savio.Client\obj\Debug\net5.0\
 C:\Users\ODIRA.DESKTOP-II4QM4T\source\repos\Savio\Savio.Client\obj\Debug\net5.0\Savio.Client.pdb
 C:\Users\ODIRA.DESKTOP-II4QM4T\source\repos\Savio\Savio.Client\obj\Debug\net5.0\Savio.Client.genruntimeconfig.cache
 C:\Users\ODIRA.DESKTOP-II4QM4T\source\repos\Savio\Savio.Client\obj\Debug\net5.0\Savio.Client.csproj.CopyComplete
+C:\Users\ODIRA.DESKTOP-II4QM4T\source\repos\Savio\Savio.Client\bin\Debug\net5.0\System.Net.Http.Formatting.dll
+C:\Users\ODIRA.DESKTOP-II4QM4T\source\repos\Savio\Savio.Client\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\ODIRA.DESKTOP-II4QM4T\source\repos\Savio\Savio.Client\obj\Debug\net5.0\Razor\Views\Shared\_TransactionsPartial.cshtml.g.cs
+C:\Users\ODIRA.DESKTOP-II4QM4T\source\repos\Savio\Savio.Client\obj\Debug\net5.0\Razor\Views\Transaction\transactions.cshtml.g.cs
