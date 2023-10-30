@@ -1,0 +1,194 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --light-gray: #eee;
+    --whitesmoke: #f8f8f8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.container-fluid {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--whitesmoke);
+}
+
+    .container-fluid > .grid-container {
+        display: grid;
+        grid-template-columns: 15% 60% 25%;
+        height: 100vh
+    }
+
+.grid-container > div:nth-of-type(1) {
+}
+
+.grid-container > div:nth-of-type(2) {
+    background-color: var(--white);
+}
+
+.grid-container > div:nth-of-type(3) {
+    background-color: #eee;
+}
+
+.logo {
+    font-weight: 900;
+    margin-bottom: 2rem;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    font-style: normal;
+    font-size: 1.5rem;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    color: var(--black);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+}
+
+.side-bar > .nav-items {
+    list-style: none;
+    line-height: 3;
+}
+
+.side-bar .nav-items a {
+    color: var(--black);
+    font-weight: 600;
+}
+
+    .side-bar .nav-items a:hover {
+        text-decoration: none;
+        background-color: greenyellow;
+    }
+
+.nav-items > .nav-field:hover {
+    background-color: greenyellow;
+    border-radius: 7px;
+}
+
+.nav-items > .nav-field {
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.nav-items {
+    margin-bottom: 15rem;
+}
+
+    .nav-items > .nav-field:hover li a {
+        color: var(--white);
+        font-weight: 700;
+    }
+
+    .nav-items > .nav-field:hover .material-symbols-outlined {
+        color: var(--white)
+    }
+
+    .nav-items > .nav-field li {
+        padding-left: 10px;
+    }
+
+.logout {
+    padding-left: 10px;
+    border: none !important;
+    background-color: transparent;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.grid-container > div:nth-of-type(2) .section-header {
+    font-weight: 900;
+    margin-bottom: 2rem;
+    font-size: 2.3rem;
+}
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
