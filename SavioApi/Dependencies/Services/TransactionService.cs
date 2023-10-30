@@ -41,8 +41,13 @@ namespace SavioApi.Dependencies.Services
         public async Task<TransactionResponse<Transaction>> SendMoney(CreateTransactionDto dto)
         {
             var transaction = _mapper.Map<Transaction>(dto);
+
             GetAccountDto accountDto =
-                new() { AccountNumber = dto.TransactionReceiver, BankName = dto.BankName };
+                new()
+                {
+                    AccountNumber = dto.TransactionReceiverAccountNumber,
+                    BankName = dto.BankName
+                };
             var receivingAccount = await _account.GetAccountByAccountNumber(accountDto);
             var sendingaccount = await _account.GetAccountByAccountId(dto.AccountId);
             // var receivingAccount=await _account.GetAccountByAccountId(dto.TransactionReceiver);
@@ -52,6 +57,7 @@ namespace SavioApi.Dependencies.Services
                 {
                     return x.Failed("RECEIVING ACCOUNT NOT FOUND");
                 }
+
                 var senderErrorInfo =
                     (sendingaccount != null) ? sendingaccount.AccountId : dto.AccountId;
 
@@ -59,48 +65,88 @@ namespace SavioApi.Dependencies.Services
                     $"INVALID TRANSACTION : INCORRECT USER DETAILS || Sender: {senderErrorInfo} | Reciever: {receivingAccount.AccountId}"
                 );
             }
-
-            var balance = sendingaccount.AccountBalance;
-            if (balance < dto.TransactionAmount)
+            if (dto.BankName != receivingAccount.BankName)
             {
-                return x.Declined("INSUFFICIENT ACCOUNT BALANCE");
+                x.Failed("INVALID BANK OR ACCOUNT NOT FOUND IN THIS BANK");
             }
-            await _account.UpdateAccountBalance(dto.AccountId, balance - dto.TransactionAmount);
-            await _account.UpdateAccountBalance(
-                receivingAccount.AccountId,
-                receivingAccount.AccountBalance + dto.TransactionAmount
-            );
+
             transaction.Account = sendingaccount;
             transaction.TransactionTime = DateTime.Now;
-            transaction.ReceivingAccount = receivingAccount.AccountId;
+            transaction.TransactionUpdatedAt = DateTime.MinValue;
+            transaction.TransactionStatus = TransactionStatus.Pending;
             transaction.TransactionType = TransactionType.Debit;
-            var response = x.Approved("TRANSFER SUCCESSFUL");
-            response.Data = transaction;
+            transaction.ReceivingAccount = receivingAccount.AccountId;
             await _context.Transactions.AddAsync(transaction);
+            var balance = sendingaccount.AccountBalance;
+            if (await ApproveTransaction(transaction.TransactionId, dto.TransactionAmount))
+            {
+                await _account.UpdateAccountBalance(dto.AccountId, balance - dto.TransactionAmount);
+                await _account.UpdateAccountBalance(
+                    receivingAccount.AccountId,
+                    receivingAccount.AccountBalance + dto.TransactionAmount
+                );
+
+                transaction.Account = sendingaccount;
+                transaction.TransactionTime = DateTime.Now;
+                transaction.TransactionStatus = TransactionStatus.Successful;
+                transaction.ReceivingAccount = receivingAccount.AccountId;
+                transaction.TransactionType = TransactionType.Debit;
+                var response = x.Approved("TRANSFER SUCCESSFUL");
+                response.Data = transaction;
+                return response;
+            }
             await _context.SaveChangesAsync();
-            return response;
+
+            return x.Declined("TRANSACTION ERROR: INSUFFICIENT ACCOUNT BALANCE ");
+
+            // await _context.Transactions.AddAsync(transaction);
         }
 
-        public Task<TransactionResponse<Transaction>> ApproveTransaction(Guid TransactionId)
+        public async Task<bool> ApproveTransaction(Guid TransactionId, double Amount)
         {
-            throw new NotImplementedException();
+            var transaction = await _context.Transactions.FindAsync(TransactionId);
+            if (transaction == null)
+            {
+                return false;
+            }
+            var accBal = transaction.Account.AccountBalance;
+            if (Amount >= accBal)
+            {
+                return false;
+            }
+            return true;
+
+            //  await _account.UpdateAccountBalance(dto.AccountId, balance - dto.TransactionAmount);
+            // await _account.UpdateAccountBalance(
+            //     receivingAccount.AccountId,
+            //     receivingAccount.AccountBalance + dto.TransactionAmount
+            // );
+            // throw new NotImplementedException();
         }
 
         public async Task<List<Transaction>> GetAccountTransactions(Guid AccountId)
         {
-            return await _context.Transactions.Where(t => t.AccountId == AccountId).ToListAsync();
+            var transactions = await _context.Transactions
+                .Where(t => t.AccountId == AccountId)
+                .ToListAsync();
             // throw new NotImplementedException();
+            if (transactions == null)
+            {
+                return null;
+            }
+            return transactions;
         }
 
-        public Task<List<TransactionResponse<Transaction>>> GetAllBankTransactions(Bank bank)
+        public async Task<List<Transaction>> GetAllBankTransactions(Bank bank)
         {
-            throw new NotImplementedException();
+            return await _context.Transactions.Where(t => t.Account.BankName == bank).ToListAsync();
+
+            //    throw new NotImplementedException();
         }
 
         public async Task<List<Transaction>> GetAllTransactions()
         {
             return await _context.Transactions.ToListAsync();
-            // throw new NotImplementedException();
         }
 
         public async Task<List<Transaction>> GetUserTransactions(Guid UserId)
@@ -109,7 +155,7 @@ namespace SavioApi.Dependencies.Services
             // throw new NotImplementedException();
         }
 
-        public Task<TransactionResponse<Transaction>> RejectTransaction(Guid TransactionId)
+        public Task<bool> RejectTransaction(Guid TransactionId)
         {
             throw new NotImplementedException();
         }

@@ -21,6 +21,6 @@ namespace SavioApi.Models.Data
         
         public Guid ReceivingAccount { get; set; }
         public double TransactionAmount { get; set; }
-        //public TransactionStatus TransactionStatus { get; set; }=TransactionStatus.Pending;
+        public TransactionStatus TransactionStatus { get; set; }=TransactionStatus.Pending;
     }
 }

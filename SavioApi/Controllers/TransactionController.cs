@@ -34,7 +34,7 @@ namespace SavioApi.Controllers
             try{
                 var transaction=await _service.SendMoney(dto);
                 if(transaction.Status==TransactionStatus.Failed||transaction.Status==TransactionStatus.Declined){
-                    return BadRequest(transaction.ResponseMessage);
+                    return BadRequest(transaction);
                 }
                 return Ok(transaction);
             }
