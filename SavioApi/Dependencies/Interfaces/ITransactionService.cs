@@ -14,10 +14,10 @@ namespace SavioApi.Dependencies.Interfaces
     public interface ITransactionService
     {
         Task<TransactionResponse<Transaction>> SendMoney(CreateTransactionDto dto);
-        Task<List<TransactionResponse<Transaction>>> GetAccountTransactions(Guid AccountId);
-        Task<List<TransactionResponse<Transaction>>> GetUserTransactions(Guid UserId);
+        Task<List<Transaction>> GetAccountTransactions(Guid AccountId);
+        Task<List<Transaction>> GetUserTransactions(Guid UserId);
         Task<List<TransactionResponse<Transaction>>> GetAllBankTransactions(Bank bank);
-        Task<List<TransactionResponse<Transaction>>> GetAllTransactions();
+        Task<List<Transaction>> GetAllTransactions();
         Task<TransactionResponse<Transaction>> UpdateTransaction(Guid TransactionId,UpdateTransactionDto dto);
         Task<TransactionResponse<Transaction>> ApproveTransaction(Guid TransactionId);
         Task<TransactionResponse<Transaction>> RejectTransaction(Guid TransactionId);

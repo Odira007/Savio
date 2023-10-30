@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\xampp\\htdocs\\WORK\\Savio\\SavioApi\\SavioApi.csproj": {}
+    "C:\\xampp\\htdocs\\WORK\\Savio\\savioapi\\SavioApi.csproj": {}
   },
   "projects": {
-    "C:\\xampp\\htdocs\\WORK\\Savio\\SavioApi\\SavioApi.csproj": {
+    "C:\\xampp\\htdocs\\WORK\\Savio\\savioapi\\SavioApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\xampp\\htdocs\\WORK\\Savio\\SavioApi\\SavioApi.csproj",
+        "projectUniqueName": "C:\\xampp\\htdocs\\WORK\\Savio\\savioapi\\SavioApi.csproj",
         "projectName": "SavioApi",
-        "projectPath": "C:\\xampp\\htdocs\\WORK\\Savio\\SavioApi\\SavioApi.csproj",
+        "projectPath": "C:\\xampp\\htdocs\\WORK\\Savio\\savioapi\\SavioApi.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\xampp\\htdocs\\WORK\\Savio\\SavioApi\\obj\\",
+        "outputPath": "C:\\xampp\\htdocs\\WORK\\Savio\\savioapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"

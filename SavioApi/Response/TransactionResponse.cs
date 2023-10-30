@@ -69,6 +69,16 @@ namespace SavioApi.Response
                 ResponseMessage = message
             };
         }
+        public TransactionResponse<T> Success(String message)
+        {
+            return new TransactionResponse<T>()
+            {
+                Status = TransactionStatus.Successful,
+                StatusCode="200",
+                ResponseCode = "00",
+                ResponseMessage = message
+            };
+        }
     
     }
 }
